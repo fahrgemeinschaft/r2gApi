@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.axitera</groupId>
-    <artifactId>restapi</artifactId>
+    <artifactId>r2gapi</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>restapi</name>
-    <description>Fake description</description>
+    <name>r2gapi</name>
+    <description>Ride2Go API for Ridesharing</description>
     <url>https://www.ride2go.com/</url>
 
     <developers>
@@ -24,14 +24,18 @@
                 <role>developer</role>
             </roles>
             <timezone>Europe/Berlin</timezone>
+            <organization>axitera GmbH</organization>
+            <organizationUrl>https://www.axitera.de</organizationUrl>
         </developer>
     </developers>
     <issueManagement>
-        <system>github</system>
-        <url>tba</url>
+        <system>trello</system>
+        <url>https://trello.com/b/ZwjDZJrQ/partner-api</url>
     </issueManagement>
     <scm>
-        <url>tba</url>
+        <url>https://github.com/fahrgemeinschaft/r2gApi</url>
+        <connection>https://github.com/fahrgemeinschaft/r2gApi.git</connection>
+        <developerConnection>https://github.com/fahrgemeinschaft/r2gApi.git</developerConnection>
     </scm>
     <organization>
         <name>ride2go</name>
