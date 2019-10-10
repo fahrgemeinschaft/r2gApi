@@ -1,0 +1,4 @@
+# leave out ide files and whatever a local build might have created
+/.idea
+/.git
+/target
