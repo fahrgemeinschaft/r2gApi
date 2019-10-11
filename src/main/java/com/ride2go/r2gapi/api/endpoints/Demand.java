@@ -24,7 +24,7 @@ public class Demand {
 
 
     @GetMapping(path="/demand/{id}", produces= MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Demand> getById(@PathVariable final String id){
+    public ResponseEntity<com.ride2go.r2gapi.api.model.Demand> getById(@PathVariable final String id){
         if(demandSanitizer.sanitizeId(id)) {
             return ResponseEntity.ok().body(null);
         }
@@ -32,7 +32,7 @@ public class Demand {
     }
 
     @PostMapping(path = "/demand/search", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Demand>> search(@RequestBody Search searchParams){
+    public ResponseEntity<List<com.ride2go.r2gapi.api.model.Demand>> search(@RequestBody Search searchParams){
 
         return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(null);
 

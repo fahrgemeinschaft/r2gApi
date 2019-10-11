@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-class Thing extends ApiData {
+public class Thing extends ApiData {
     UUID id;
 
     URL url;

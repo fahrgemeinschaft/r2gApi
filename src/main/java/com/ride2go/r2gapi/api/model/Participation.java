@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @Builder
 @EqualsAndHashCode(callSuper=false)
-class Participation extends Thing {
+public class Participation extends Thing {
 
     enum ParticipationRole {
         DRIVER,

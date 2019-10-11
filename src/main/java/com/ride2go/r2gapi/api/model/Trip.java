@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @Builder
 @EqualsAndHashCode(callSuper=false)
-class Trip extends Thing {
+public class Trip extends Thing {
 
     ZonedDateTime arrivalTime;
     ZonedDateTime departureTime;

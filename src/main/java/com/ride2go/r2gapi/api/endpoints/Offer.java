@@ -2,7 +2,7 @@ package com.ride2go.r2gapi.api.endpoints;
 
 
 import com.ride2go.r2gapi.api.sanity.OfferSanitizer;
-import com.ride2go.r2gapi.api.sanity.TripSanitizer;
+import com.ride2go.r2gapi.api.model.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +21,7 @@ public class Offer {
 
 
     @GetMapping(path="/offer/{id}", produces= MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Offer> getById(@PathVariable final String id){
+    public ResponseEntity<com.ride2go.r2gapi.api.model.Offer> getById(@PathVariable final String id){
         if(offerSanitizer.sanitizeId(id)) {
             return ResponseEntity.ok().body(null);
         }
@@ -29,7 +29,7 @@ public class Offer {
     }
 
     @PostMapping(path = "/offer/search", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Offer>> search(@RequestBody Search searchParams){
+    public ResponseEntity<List<com.ride2go.r2gapi.api.model.Offer>> search(@RequestBody Search searchParams){
 
         return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(null);
 

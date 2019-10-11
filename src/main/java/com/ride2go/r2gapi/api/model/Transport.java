@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=false)
-class Transport extends Thing {
+public class Transport extends Thing {
 
     enum TransportType{
         CAR,

@@ -3,6 +3,7 @@ package com.ride2go.r2gapi.api.model;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 /**
@@ -11,9 +12,9 @@ import java.util.List;
  * for technical users/machines or Organisations.
  */
 @Data
-@Builder
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper=false)
-class Persona extends Thing{
+public class Persona extends Thing{
 
     String additionalName;
     String familyName;
