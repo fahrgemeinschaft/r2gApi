@@ -8,9 +8,8 @@ import java.time.ZonedDateTime;
 @Data
 public class Search {
 
-
-    GeoLocation location;
-    long radius;
+    SearchRadius startPoint;
+    SearchRadius endPoint;
 
     ZonedDateTime departureTime;
     ZonedDateTime arrivalTime;
