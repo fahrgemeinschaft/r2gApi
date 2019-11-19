@@ -8,6 +8,8 @@ import java.time.ZonedDateTime;
 @Data
 public class Search {
 
+    SearchPage page;
+
     SearchRadius startPoint;
     SearchRadius endPoint;
 
