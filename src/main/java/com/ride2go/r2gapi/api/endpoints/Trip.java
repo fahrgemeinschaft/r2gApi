@@ -36,4 +36,11 @@ public class Trip {
 
     }
 
+    @PostMapping(path = "/trip/search/minimal", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<com.ride2go.r2gapi.api.model.Trip>> searchMinimal(@RequestBody Search searchParams){
+
+        return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(null);
+
+    }
+
 }
