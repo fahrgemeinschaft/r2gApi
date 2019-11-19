@@ -11,10 +11,11 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper=false)
 public class Transport extends Thing {
 
-    enum TransportType{
+    public enum TransportType{
         CAR,
         PLANE,
         BOAT,
+        TRAIN
     }
 
 
