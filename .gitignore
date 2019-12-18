@@ -26,3 +26,8 @@ hs_err_pid*
 .idea
 *.iml
 target/
+out/
+
+# gradle
+build/
+.gradle/
