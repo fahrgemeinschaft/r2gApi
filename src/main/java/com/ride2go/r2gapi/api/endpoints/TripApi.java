@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -38,10 +39,14 @@ public class TripApi {
     @JsonView(Views.IncludeTripOfferDemand.class)
     @GetMapping(path = "/trip/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<TripDto> getById(@PathVariable final String id) {
-        if (tripSanitizer.sanitizeId(id)) {
-            return ResponseEntity.ok().body(null);
+        if (!tripSanitizer.sanitizeId(id)) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+
+        return tripRepository.findById(UUID.fromString(id))
+                .map(tripMapper::toDto)
+                .map(t -> ResponseEntity.ok().body(t))
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @JsonView(Views.IncludeTripOfferDemand.class)

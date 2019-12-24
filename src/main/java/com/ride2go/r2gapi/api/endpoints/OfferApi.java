@@ -11,6 +11,7 @@ import com.ride2go.r2gapi.legacy.search.Search;
 import com.ride2go.r2gapi.legacy.search.TripType;
 import com.ride2go.r2gapi.legacy.search.paging.Page;
 import com.ride2go.r2gapi.mapper.OfferMapper;
+import com.ride2go.r2gapi.mapper.TripMapper;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.UUID;
 
 @RestController
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -33,15 +35,21 @@ public class OfferApi {
 
     OfferSanitizer offerSanitizer;
     ElasticTripRepository tripRepository;
+    TripMapper tripMapper;
     OfferMapper offerMapper;
 
     @JsonView(Views.IncludeMarketSubject.class)
     @GetMapping(path = "/offer/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<OfferDto> getById(@PathVariable final String id) {
-        if (offerSanitizer.sanitizeId(id)) {
-            return ResponseEntity.ok().body(null);
+        if (!offerSanitizer.sanitizeId(id)) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+
+        return tripRepository.findById(UUID.fromString(id))
+                .map(tripMapper::toDto)
+                .map(offerMapper::map)
+                .map(t -> ResponseEntity.ok().body(t))
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @JsonView(Views.IncludeMarketSubject.class)
