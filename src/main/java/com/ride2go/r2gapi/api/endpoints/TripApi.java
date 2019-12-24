@@ -8,6 +8,7 @@ import com.ride2go.r2gapi.api.sanity.TripSanitizer;
 import com.ride2go.r2gapi.legacy.elastic.ElasticTripRepository;
 import com.ride2go.r2gapi.legacy.model.Trip;
 import com.ride2go.r2gapi.legacy.search.Search;
+import com.ride2go.r2gapi.legacy.search.TripType;
 import com.ride2go.r2gapi.legacy.search.paging.Page;
 import com.ride2go.r2gapi.mapper.TripMapper;
 import lombok.AccessLevel;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -45,6 +47,7 @@ public class TripApi {
     @JsonView(Views.IncludeTripOfferDemand.class)
     @PostMapping(path = "/trip/search", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Page<TripDto>> search(@RequestBody Search searchParams) {
+        searchParams.setTripTypes(Arrays.asList(TripType.OFFER, TripType.SEARCH));
         Page<Trip> trips = tripRepository.findAllTrips(searchParams);
         Page<TripDto> result = tripMapper.toDto(trips);
         return ResponseEntity.ok().body(result);

@@ -1,9 +1,19 @@
 package com.ride2go.r2gapi.api.endpoints;
 
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.ride2go.r2gapi.api.dto.OfferDto;
+import com.ride2go.r2gapi.api.dto.Views;
 import com.ride2go.r2gapi.api.sanity.OfferSanitizer;
-import com.ride2go.r2gapi.legacy.model.Offer;
+import com.ride2go.r2gapi.legacy.elastic.ElasticTripRepository;
+import com.ride2go.r2gapi.legacy.model.Trip;
 import com.ride2go.r2gapi.legacy.search.Search;
+import com.ride2go.r2gapi.legacy.search.TripType;
+import com.ride2go.r2gapi.legacy.search.paging.Page;
+import com.ride2go.r2gapi.mapper.OfferMapper;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,30 +23,33 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.util.Arrays;
+import java.util.Collections;
 
 @RestController
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+@RequiredArgsConstructor
 public class OfferApi {
 
-    private final OfferSanitizer offerSanitizer;
+    OfferSanitizer offerSanitizer;
+    ElasticTripRepository tripRepository;
+    OfferMapper offerMapper;
 
-    public OfferApi(OfferSanitizer offerSanitizer) {
-        this.offerSanitizer = offerSanitizer;
-    }
-
-
+    @JsonView(Views.IncludeMarketSubject.class)
     @GetMapping(path = "/offer/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Offer> getById(@PathVariable final String id) {
+    public ResponseEntity<OfferDto> getById(@PathVariable final String id) {
         if (offerSanitizer.sanitizeId(id)) {
             return ResponseEntity.ok().body(null);
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
     }
 
+    @JsonView(Views.IncludeMarketSubject.class)
     @PostMapping(path = "/offer/search", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Offer>> search(@RequestBody Search searchParams) {
-
-        return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(null);
-
+    public ResponseEntity<Page<OfferDto>> search(@RequestBody Search searchParams) {
+        searchParams.setTripTypes(Collections.singletonList(TripType.OFFER));
+        Page<Trip> trips = tripRepository.findAllTrips(searchParams);
+        Page<OfferDto> result = offerMapper.map(trips);
+        return ResponseEntity.ok().body(result);
     }
 }
