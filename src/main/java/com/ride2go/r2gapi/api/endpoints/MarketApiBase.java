@@ -13,7 +13,6 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -40,11 +39,10 @@ abstract class MarketApiBase<T> {
 
     protected abstract T map(TripDto trip);
 
-    protected ResponseEntity<Page<T>> doSearch(Search searchParams) {
+    protected Page<T> doSearch(Search searchParams) {
         searchParams.setTripTypes(supportedTypes());
         Page<Trip> trips = tripRepository.findAllTrips(searchParams);
-        Page<T> result = map(trips);
-        return ResponseEntity.ok().body(result);
+        return map(trips);
     }
 
     protected abstract List<TripType> supportedTypes();
