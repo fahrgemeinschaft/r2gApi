@@ -16,7 +16,7 @@ apply plugin: 'io.spring.dependency-management'
 repositories {
     mavenLocal()
     maven {
-        url = 'https://repo.maven.apache.org/maven2'
+        url = 'http://repo.maven.apache.org/maven2'
     }
     maven {
         url = System.getenv("NEXUS_URL")
