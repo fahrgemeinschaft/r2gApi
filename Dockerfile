@@ -9,6 +9,6 @@ MAINTAINER zero@dividebyzero.cc
 
 RUN mkdir -p /home/app
 WORKDIR /home/app
-COPY --from=BUILDER /target/r2gapi.jar ./app.jar
+COPY --from=BUILDER /build/libs/r2gapi.jar ./app.jar
 EXPOSE 8080
 ENTRYPOINT java -XX:+PrintFlagsFinal -Djava.security.egd=file:/dev/./urandom $JAVA_OPTIONS -jar app.jar
