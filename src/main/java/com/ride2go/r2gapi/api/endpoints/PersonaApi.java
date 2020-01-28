@@ -1,10 +1,10 @@
 package com.ride2go.r2gapi.api.endpoints;
 
 
+import com.ride2go.r2gapi.api.dto.UserSearch;
 import com.ride2go.r2gapi.api.sanity.PersonaSanitizer;
 import com.ride2go.r2gapi.legacy.model.ContactPoint;
 import com.ride2go.r2gapi.legacy.model.Persona;
-import com.ride2go.r2gapi.legacy.search.Search;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -52,7 +52,7 @@ public class PersonaApi {
     @Operation(description = "Persona searching")
 //    @ApiResponse(description = "Successful operation", responseCode = "200")
     @ApiResponse(description = "Not yet implemented", responseCode = "501", content = @Content)
-    public ResponseEntity<List<Persona>> search(@Parameter(description = "Search criteria", required = true) @RequestBody Search searchParams) {
+    public ResponseEntity<List<Persona>> search(@Parameter(description = "Search criteria", required = true) @RequestBody UserSearch searchParams) {
 
         return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(null);
 
