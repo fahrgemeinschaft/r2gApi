@@ -51,7 +51,6 @@ configurations {
 
 ext {
     springDocVersion = '1.1.45'
-    h2Version = '1.4.199'
     hamcrestVersion = '2.1'
     httpClientVersion = '4.5.10'
     mockitoVersion = '3.0.0'
@@ -60,6 +59,7 @@ ext {
     mapstructVersion = "1.3.1.Final"
     elasticVersion = '2.4.0'
     cucumberVersion = '5.1.2'
+    testContainersVersion = '1.12.5'
 }
 
 bootJar {
@@ -73,8 +73,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-configuration-processor'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation "org.springdoc:springdoc-openapi-ui:${springDocVersion}"
-    
-    implementation "com.h2database:h2:${h2Version}"
 
     implementation "com.ride2go.legacy:repository:${r2gLegacyVersion}"
 
@@ -91,9 +89,10 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
 
     testImplementation "org.hamcrest:hamcrest:${hamcrestVersion}"
-    testImplementation "org.apache.httpcomponents:httpclient:${httpClientVersion}"
     testImplementation "org.mockito:mockito-core:${mockitoVersion}"
 
+    integrationTestImplementation "org.apache.httpcomponents:httpclient:${httpClientVersion}"
+    integrationTestImplementation "org.testcontainers:mysql:${testContainersVersion}"
     integrationTestImplementation "io.cucumber:cucumber-java:${cucumberVersion}"
 }
 
