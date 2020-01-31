@@ -13,16 +13,28 @@ plugins {
 
 apply plugin: 'io.spring.dependency-management'
 
+Properties properties = new Properties()
+def propertiesFile = project.rootProject.file('local.properties')
+if (propertiesFile.exists()) {
+    properties.load(propertiesFile.newDataInputStream())
+}
+def nexusUrl = properties.getProperty('nexus.url') != null ? properties.getProperty('nexus.url') : System.getenv("NEXUS_URL")
+def nexusUser = properties.getProperty('nexus.user') != null ? properties.getProperty('nexus.user') : System.getenv("NEXUS_USER")
+def nexusPass = properties.getProperty('nexus.pass') != null ? properties.getProperty('nexus.pass') : System.getenv("NEXUS_PASS")
+
+
+
+
 repositories {
     mavenLocal()
     maven {
         url = 'https://repo.maven.apache.org/maven2'
     }
     maven {
-        url = System.getenv("NEXUS_URL")
+        url = nexusUrl
         credentials {
-            username = System.getenv("NEXUS_USER")
-            password = System.getenv("NEXUS_PASS")
+            username = nexusUser
+            password = nexusPass
         }
     }
 }
