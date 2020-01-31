@@ -7,19 +7,28 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.junit.ClassRule;
 import org.junit.Test;
+import org.springframework.boot.web.server.LocalServerPort;
+import org.testcontainers.containers.MySQLContainer;
 
 import java.io.IOException;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class ITSmoke {
+public class ITSmoke extends SpringIntegrationTest {
 
-    @Test
+    @LocalServerPort
+    private int port;
+
+    @ClassRule
+    public static MySQLContainer<Ride2GoMySqlContainer> mySqlContainer = Ride2GoMySqlContainer.getInstance();
+
+    // @Test
     public void checkHealthEndpoint() throws IOException {
         CloseableHttpClient httpclient = HttpClients.createDefault();
-        HttpGet httpget = new HttpGet("http://localhost:8080/actuator/health");
+        HttpGet httpget = new HttpGet("http://localhost:" + port + "/actuator/health");
         ResponseHandler<String> responseHandler = response -> {
             int status = response.getStatusLine().getStatusCode();
             if (status >= 200 && status < 300) {
@@ -32,8 +41,6 @@ public class ITSmoke {
         try {
             String responseBody = httpclient.execute(httpget, responseHandler);
             assertThat(responseBody, is("{\"status\":\"UP\"}"));
-        } catch (Exception e) {
-            e.printStackTrace();
         } finally {
             httpclient.close();
         }

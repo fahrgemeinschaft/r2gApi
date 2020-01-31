@@ -1,0 +1,373 @@
+[
+  {
+    "TripID": "cd6c54ff-d387-0b64-fd5c-669e9ee570ff",
+    "IDuser": "8954d4b2-a641-2524-5dc3-99c0b9ce0155",
+    "Startdate": "20130703",
+    "Starttime": "800",
+    "StarttimeSearchRoute": null,
+    "Smoker": "flex",
+    "Prefgender": null,
+    "NumberPlate": "",
+    "Places": "4",
+    "Enterdate": "1372848251",
+    "Contactmail": "302333@tests1.ride2go.com",
+    "Contactlandline": "0999302333",
+    "Contactmobile": "0999302333",
+    "Description": "Morgens fahre ich die Strecke zwischen 8:00 und 9:00Uhr.\r\n\r\nRückfahrt ist flexibler, ab ca. 17Uhr.",
+    "ClientIP": null,
+    "Triptype": "offer",
+    "Partnername": null,
+    "Deeplink": null,
+    "Relevance": "10",
+    "Price": "5",
+    "PriceSearchRoute": null,
+    "Missingreoccurs": "",
+    "Premiumuser_until": null,
+    "Businessuser_until": null,
+    "Adacuser": null,
+    "from_title": "Bruchsal",
+    "from_seotitle": "bruchsal",
+    "to_title": "Böblingen",
+    "to_seotitle": "boeblingen",
+    "car": null,
+    "baggage": null,
+    "animals": null,
+    "int_id": "166554",
+    "url": null,
+    "reminder_last_send": null,
+    "reminder_send_ids": "",
+    "reminder_active": "0",
+    "Accuracy": null,
+    "Routings": [
+      {
+        "RoutingID": "2cb0dff8-d164-11e5-ac4c-002590a86080",
+        "Origin": {
+          "PlaceID": "0c0ae405-3718-d5f4-bd1e-45f8a630fbb2",
+          "Address": "Bretten, Deutschland",
+          "Accuracy": "0",
+          "LocalityName": null,
+          "CountryCode": "",
+          "CountryName": "",
+          "Longitude": "8.7010592",
+          "Latitude": "49.0362907",
+          "PostalCode": null,
+          "Placetype": "geo",
+          "StopPrice": null,
+          "StopTime": null,
+          "LatLonBox": {
+            "North": null,
+            "South": null,
+            "East": null,
+            "West": null
+          }
+        },
+        "Destination": {
+          "PlaceID": "5a502e08-f309-76b4-1593-6de9dc48b2ac",
+          "Address": "Sindelfingen, Deutschland",
+          "Accuracy": "0",
+          "LocalityName": null,
+          "CountryCode": "",
+          "CountryName": "",
+          "Longitude": "9.0044053",
+          "Latitude": "48.7074558",
+          "PostalCode": null,
+          "Placetype": "geo",
+          "StopPrice": null,
+          "StopTime": null,
+          "LatLonBox": {
+            "North": null,
+            "South": null,
+            "East": null,
+            "West": null
+          }
+        },
+        "RoutingIndex": "-3",
+        "OriginLocationCords": {
+          "lon": "8.7010592",
+          "lat": "49.0362907"
+        },
+        "DestinationLocationCords": {
+          "lon": "9.0044053",
+          "lat": "48.7074558"
+        }
+      },
+      {
+        "RoutingID": "2cb12557-d164-11e5-ac4c-002590a86080",
+        "Origin": {
+          "PlaceID": "bb1b96c2-cf0e-31a4-9564-a838b91addb4",
+          "Address": "Pforzheim, Deutschland",
+          "Accuracy": "0",
+          "LocalityName": null,
+          "CountryCode": "",
+          "CountryName": "",
+          "Longitude": "8.6932927",
+          "Latitude": "48.8926378",
+          "PostalCode": null,
+          "Placetype": "geo",
+          "StopPrice": null,
+          "StopTime": null,
+          "LatLonBox": {
+            "North": null,
+            "South": null,
+            "East": null,
+            "West": null
+          }
+        },
+        "Destination": {
+          "PlaceID": "5a502e08-f309-76b4-1593-6de9dc48b2ac",
+          "Address": "Sindelfingen, Deutschland",
+          "Accuracy": "0",
+          "LocalityName": null,
+          "CountryCode": "",
+          "CountryName": "",
+          "Longitude": "9.0044053",
+          "Latitude": "48.7074558",
+          "PostalCode": null,
+          "Placetype": "geo",
+          "StopPrice": null,
+          "StopTime": null,
+          "LatLonBox": {
+            "North": null,
+            "South": null,
+            "East": null,
+            "West": null
+          }
+        },
+        "RoutingIndex": "-3",
+        "OriginLocationCords": {
+          "lon": "8.6932927",
+          "lat": "48.8926378"
+        },
+        "DestinationLocationCords": {
+          "lon": "9.0044053",
+          "lat": "48.7074558"
+        }
+      },
+      {
+        "RoutingID": "2cb0b89b-d164-11e5-ac4c-002590a86080",
+        "Origin": {
+          "PlaceID": "0c0ae405-3718-d5f4-bd1e-45f8a630fbb2",
+          "Address": "Bretten, Deutschland",
+          "Accuracy": "0",
+          "LocalityName": null,
+          "CountryCode": "",
+          "CountryName": "",
+          "Longitude": "8.7010592",
+          "Latitude": "49.0362907",
+          "PostalCode": null,
+          "Placetype": "geo",
+          "StopPrice": null,
+          "StopTime": null,
+          "LatLonBox": {
+            "North": null,
+            "South": null,
+            "East": null,
+            "West": null
+          }
+        },
+        "Destination": {
+          "PlaceID": "bb1b96c2-cf0e-31a4-9564-a838b91addb4",
+          "Address": "Pforzheim, Deutschland",
+          "Accuracy": "0",
+          "LocalityName": null,
+          "CountryCode": "",
+          "CountryName": "",
+          "Longitude": "8.6932927",
+          "Latitude": "48.8926378",
+          "PostalCode": null,
+          "Placetype": "geo",
+          "StopPrice": null,
+          "StopTime": null,
+          "LatLonBox": {
+            "North": null,
+            "South": null,
+            "East": null,
+            "West": null
+          }
+        },
+        "RoutingIndex": "-2",
+        "OriginLocationCords": {
+          "lon": "8.7010592",
+          "lat": "49.0362907"
+        },
+        "DestinationLocationCords": {
+          "lon": "8.6932927",
+          "lat": "48.8926378"
+        }
+      },
+      {
+        "RoutingID": "0074681d-c7db-9184-191a-fd6ea17f70dd",
+        "Origin": {
+          "PlaceID": "984c2fe8-8902-03b4-8167-413afbfc4afc",
+          "Address": "Bruchsal, Deutschland",
+          "Accuracy": "0",
+          "LocalityName": null,
+          "CountryCode": "",
+          "CountryName": "",
+          "Longitude": "8.5844108",
+          "Latitude": "49.1249712",
+          "PostalCode": null,
+          "Placetype": "geo",
+          "StopPrice": null,
+          "StopTime": null,
+          "LatLonBox": {
+            "North": null,
+            "South": null,
+            "East": null,
+            "West": null
+          }
+        },
+        "Destination": {
+          "PlaceID": "5a502e08-f309-76b4-1593-6de9dc48b2ac",
+          "Address": "Sindelfingen, Deutschland",
+          "Accuracy": "0",
+          "LocalityName": null,
+          "CountryCode": "",
+          "CountryName": "",
+          "Longitude": "9.0044053",
+          "Latitude": "48.7074558",
+          "PostalCode": null,
+          "Placetype": "geo",
+          "StopPrice": null,
+          "StopTime": null,
+          "LatLonBox": {
+            "North": null,
+            "South": null,
+            "East": null,
+            "West": null
+          }
+        },
+        "RoutingIndex": "0",
+        "OriginLocationCords": {
+          "lon": "8.5844108",
+          "lat": "49.1249712"
+        },
+        "DestinationLocationCords": {
+          "lon": "9.0044053",
+          "lat": "48.7074558"
+        }
+      },
+      {
+        "RoutingID": "a98a8500-f15e-5c84-59c0-2b07f92c5c6d",
+        "Origin": {
+          "PlaceID": "f82f1cd3-e10f-a324-e58a-a060e4bfb3c3",
+          "Address": "Bruchsal, Deutschland",
+          "Accuracy": "0",
+          "LocalityName": null,
+          "CountryCode": "",
+          "CountryName": "",
+          "Longitude": "8.5844108",
+          "Latitude": "49.1249712",
+          "PostalCode": null,
+          "Placetype": "geo",
+          "StopPrice": null,
+          "StopTime": null,
+          "LatLonBox": {
+            "North": null,
+            "South": null,
+            "East": null,
+            "West": null
+          }
+        },
+        "Destination": {
+          "PlaceID": "0c0ae405-3718-d5f4-bd1e-45f8a630fbb2",
+          "Address": "Bretten, Deutschland",
+          "Accuracy": "0",
+          "LocalityName": null,
+          "CountryCode": "",
+          "CountryName": "",
+          "Longitude": "8.7010592",
+          "Latitude": "49.0362907",
+          "PostalCode": null,
+          "Placetype": "geo",
+          "StopPrice": null,
+          "StopTime": null,
+          "LatLonBox": {
+            "North": null,
+            "South": null,
+            "East": null,
+            "West": null
+          }
+        },
+        "RoutingIndex": "1",
+        "OriginLocationCords": {
+          "lon": "8.5844108",
+          "lat": "49.1249712"
+        },
+        "DestinationLocationCords": {
+          "lon": "8.7010592",
+          "lat": "49.0362907"
+        }
+      },
+      {
+        "RoutingID": "dcbe0446-922b-30f4-250a-8bf906c1ab21",
+        "Origin": {
+          "PlaceID": "685d14bd-252d-e234-1d66-dd2bd256446a",
+          "Address": "Bruchsal, Deutschland",
+          "Accuracy": "0",
+          "LocalityName": null,
+          "CountryCode": "",
+          "CountryName": "",
+          "Longitude": "8.5844108",
+          "Latitude": "49.1249712",
+          "PostalCode": null,
+          "Placetype": "geo",
+          "StopPrice": null,
+          "StopTime": null,
+          "LatLonBox": {
+            "North": null,
+            "South": null,
+            "East": null,
+            "West": null
+          }
+        },
+        "Destination": {
+          "PlaceID": "bb1b96c2-cf0e-31a4-9564-a838b91addb4",
+          "Address": "Pforzheim, Deutschland",
+          "Accuracy": "0",
+          "LocalityName": null,
+          "CountryCode": "",
+          "CountryName": "",
+          "Longitude": "8.6932927",
+          "Latitude": "48.8926378",
+          "PostalCode": null,
+          "Placetype": "geo",
+          "StopPrice": null,
+          "StopTime": null,
+          "LatLonBox": {
+            "North": null,
+            "South": null,
+            "East": null,
+            "West": null
+          }
+        },
+        "RoutingIndex": "2",
+        "OriginLocationCords": {
+          "lon": "8.5844108",
+          "lat": "49.1249712"
+        },
+        "DestinationLocationCords": {
+          "lon": "8.6932927",
+          "lat": "48.8926378"
+        }
+      }
+    ],
+    "Reoccur": {
+      "Monday": "1",
+      "Tuesday": "1",
+      "Wednesday": "1",
+      "Thursday": "1",
+      "Friday": "1",
+      "Saturday": null,
+      "Sunday": null
+    },
+    "Privacy": {
+      "Email": "1",
+      "Name": "1",
+      "Landline": "1",
+      "Mobile": "1",
+      "NumberPlate": "1",
+      "Car": "1"
+    }
+  }
+]

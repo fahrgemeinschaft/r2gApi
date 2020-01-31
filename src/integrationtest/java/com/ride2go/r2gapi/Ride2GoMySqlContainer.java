@@ -14,16 +14,13 @@ public class Ride2GoMySqlContainer extends MySQLContainer<Ride2GoMySqlContainer>
     public static Ride2GoMySqlContainer getInstance() {
         if (container == null) {
             container = new Ride2GoMySqlContainer()
-                    .withDatabaseName("fgtest")
-                    //.withInitScript("init-tc-schema.sql")
-            ;
+                    .withDatabaseName("fgtest");
         }
         return container;
     }
 
     @Override
     public void start() {
-        //DB_HOST=localhost;DB_NAME=fgtest;DB_USER=ride2go;DB_PASSWORD=ride2go123
         super.start();
         System.setProperty("spring.datasource.url", container.getJdbcUrl());
         System.setProperty("DB_NAME", container.getDatabaseName());

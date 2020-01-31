@@ -7,6 +7,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO';
 
 USE `fgtest`;
 
+DROP TABLE IF EXISTS `events`;
 CREATE TABLE IF NOT EXISTS `events` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `startdate` datetime DEFAULT NULL,
@@ -28,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `events` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=403 DEFAULT CHARSET=latin1;
 
+DROP TABLE IF EXISTS `fg_places`;
 CREATE TABLE IF NOT EXISTS `fg_places` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` text NOT NULL,
@@ -47,6 +49,7 @@ CREATE TABLE IF NOT EXISTS `fg_places` (
   FULLTEXT KEY `Address` (`Address`)
 ) ENGINE=MyISAM AUTO_INCREMENT=10129381 DEFAULT CHARSET=latin1;
 
+DROP TABLE IF EXISTS `fg_privacy`;
 CREATE TABLE IF NOT EXISTS `fg_privacy` (
   `requestID` varchar(36) NOT NULL,
   `IDuser` varchar(36) NOT NULL,
@@ -66,6 +69,7 @@ CREATE TABLE IF NOT EXISTS `fg_privacy` (
   CONSTRAINT `PrivacyOnUserRequestor` FOREIGN KEY (`IDrequestor`) REFERENCES `sys_user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
+DROP TABLE IF EXISTS `fg_privacy2`;
 CREATE TABLE IF NOT EXISTS `fg_privacy2` (
   `tripID` varchar(36) NOT NULL,
   `name` int(2) unsigned DEFAULT '0' COMMENT '0=Anfrage,1=Sichtbar,4=Nur Mitglieder,5=Versteckt',
@@ -78,6 +82,7 @@ CREATE TABLE IF NOT EXISTS `fg_privacy2` (
   CONSTRAINT `fg_privacy2_ibfk_1` FOREIGN KEY (`tripID`) REFERENCES `fg_trips` (`tripID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `fg_trips`;
 CREATE TABLE IF NOT EXISTS `fg_trips` (
   `tripID` varchar(36) NOT NULL DEFAULT '',
   `IDuser` varchar(36) NOT NULL,
@@ -123,6 +128,7 @@ CREATE TABLE IF NOT EXISTS `fg_trips` (
   CONSTRAINT `TripsOnUser` FOREIGN KEY (`IDuser`) REFERENCES `sys_user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=521332 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
+DROP TABLE IF EXISTS `fg_trips_contact`;
 CREATE TABLE IF NOT EXISTS `fg_trips_contact` (
   `tripID` varchar(36) CHARACTER SET utf8 NOT NULL DEFAULT '',
   `mobile` varchar(36) CHARACTER SET utf8 DEFAULT NULL,
@@ -132,6 +138,7 @@ CREATE TABLE IF NOT EXISTS `fg_trips_contact` (
   KEY `landline` (`landline`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+DROP TABLE IF EXISTS `fg_trips_reoccurs`;
 CREATE TABLE IF NOT EXISTS `fg_trips_reoccurs` (
   `IDtrip` varchar(36) NOT NULL DEFAULT '',
   `mo` tinyint(1) DEFAULT NULL,
@@ -152,6 +159,7 @@ CREATE TABLE IF NOT EXISTS `fg_trips_reoccurs` (
   CONSTRAINT `ReoccursOnTrips` FOREIGN KEY (`IDtrip`) REFERENCES `fg_trips` (`tripID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
+DROP TABLE IF EXISTS `fg_trips_reoccurs2`;
 CREATE TABLE IF NOT EXISTS `fg_trips_reoccurs2` (
   `IDtrip` varchar(36) NOT NULL DEFAULT '',
   `mo` tinyint(1) DEFAULT NULL,
@@ -171,6 +179,7 @@ CREATE TABLE IF NOT EXISTS `fg_trips_reoccurs2` (
   KEY `su` (`su`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
+DROP TABLE IF EXISTS `fg_trips_reoccurs_save`;
 CREATE TABLE IF NOT EXISTS `fg_trips_reoccurs_save` (
   `IDtrip` varchar(36) NOT NULL DEFAULT '',
   `mo` tinyint(1) DEFAULT NULL,
@@ -183,6 +192,7 @@ CREATE TABLE IF NOT EXISTS `fg_trips_reoccurs_save` (
   PRIMARY KEY (`IDtrip`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
+DROP TABLE IF EXISTS `fg_trips_routing`;
 CREATE TABLE IF NOT EXISTS `fg_trips_routing` (
   `routingID` varchar(36) NOT NULL DEFAULT '',
   `IDorigin` varchar(36) NOT NULL,
@@ -198,6 +208,7 @@ CREATE TABLE IF NOT EXISTS `fg_trips_routing` (
   KEY `IDorigin_2` (`IDorigin`,`IDdestination`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
+DROP TABLE IF EXISTS `fg_trips_routing_places`;
 CREATE TABLE IF NOT EXISTS `fg_trips_routing_places` (
   `placeID` varchar(36) NOT NULL,
   `IDcreator` varchar(36) NOT NULL,
@@ -227,6 +238,7 @@ CREATE TABLE IF NOT EXISTS `fg_trips_routing_places` (
   CONSTRAINT `_RoutingPlacesOnUser` FOREIGN KEY (`IDcreator`) REFERENCES `sys_user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `fg_trips_routing_places_new`;
 CREATE TABLE IF NOT EXISTS `fg_trips_routing_places_new` (
   `placeID` varchar(36) NOT NULL,
   `IDcreator` varchar(36) NOT NULL,
@@ -256,6 +268,7 @@ CREATE TABLE IF NOT EXISTS `fg_trips_routing_places_new` (
   CONSTRAINT `fg_trips_routing_places_new_ibfk_2` FOREIGN KEY (`IDtrip`) REFERENCES `fg_trips` (`tripID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `fg_trips_routing_places_to_delete`;
 CREATE TABLE IF NOT EXISTS `fg_trips_routing_places_to_delete` (
   `placeID` varchar(36) NOT NULL,
   `IDcreator` varchar(36) NOT NULL,
@@ -282,6 +295,7 @@ CREATE TABLE IF NOT EXISTS `fg_trips_routing_places_to_delete` (
   KEY `lon` (`lon`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `mail_bounces_complains`;
 CREATE TABLE IF NOT EXISTS `mail_bounces_complains` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
@@ -294,6 +308,7 @@ CREATE TABLE IF NOT EXISTS `mail_bounces_complains` (
   KEY `email_2` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=60272 DEFAULT CHARSET=latin1;
 
+DROP TABLE IF EXISTS `sys_apikeys`;
 CREATE TABLE IF NOT EXISTS `sys_apikeys` (
   `apikey` varchar(128) NOT NULL,
   `publickey` varchar(64) NOT NULL,
@@ -304,6 +319,7 @@ CREATE TABLE IF NOT EXISTS `sys_apikeys` (
   PRIMARY KEY (`apikey`,`publickey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `sys_astro`;
 CREATE TABLE IF NOT EXISTS `sys_astro` (
   `astroID` int(11) NOT NULL AUTO_INCREMENT,
   `startdate` int(11) NOT NULL DEFAULT '0',
@@ -312,6 +328,7 @@ CREATE TABLE IF NOT EXISTS `sys_astro` (
   PRIMARY KEY (`astroID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `sys_auth`;
 CREATE TABLE IF NOT EXISTS `sys_auth` (
   `authKey` varchar(128) NOT NULL,
   `publicKey` varchar(64) NOT NULL,
@@ -324,6 +341,7 @@ CREATE TABLE IF NOT EXISTS `sys_auth` (
   CONSTRAINT `AuthOnUser` FOREIGN KEY (`IDuser`) REFERENCES `sys_user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `sys_captcha`;
 CREATE TABLE IF NOT EXISTS `sys_captcha` (
   `captchaID` varchar(36) NOT NULL,
   `question` varchar(100) NOT NULL,
@@ -337,6 +355,7 @@ CREATE TABLE IF NOT EXISTS `sys_captcha` (
   KEY `usedate` (`usedate`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `sys_geo_cache`;
 CREATE TABLE IF NOT EXISTS `sys_geo_cache` (
   `autoID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `address` varchar(100) NOT NULL,
@@ -355,6 +374,7 @@ CREATE TABLE IF NOT EXISTS `sys_geo_cache` (
   KEY `requestinput` (`requestinput`)
 ) ENGINE=InnoDB AUTO_INCREMENT=509304 DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `sys_hobbies`;
 CREATE TABLE IF NOT EXISTS `sys_hobbies` (
   `hobbyID` int(11) NOT NULL DEFAULT '0',
   `hobby` varchar(255) NOT NULL DEFAULT '',
@@ -363,6 +383,7 @@ CREATE TABLE IF NOT EXISTS `sys_hobbies` (
   KEY `parentID` (`parentID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `sys_imagevalidation`;
 CREATE TABLE IF NOT EXISTS `sys_imagevalidation` (
   `wordID` int(11) NOT NULL AUTO_INCREMENT,
   `word` varchar(15) NOT NULL DEFAULT '',
@@ -370,6 +391,7 @@ CREATE TABLE IF NOT EXISTS `sys_imagevalidation` (
   PRIMARY KEY (`wordID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=939 DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `sys_invitecodes`;
 CREATE TABLE IF NOT EXISTS `sys_invitecodes` (
   `invitecode` varchar(40) CHARACTER SET utf8 NOT NULL,
   `IDuser` varchar(40) CHARACTER SET utf8 NOT NULL,
@@ -381,6 +403,7 @@ CREATE TABLE IF NOT EXISTS `sys_invitecodes` (
   CONSTRAINT `sys_invitecodes_ibfk_1` FOREIGN KEY (`IDuser`) REFERENCES `sys_user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+DROP TABLE IF EXISTS `sys_notifications`;
 CREATE TABLE IF NOT EXISTS `sys_notifications` (
   `notificationID` varchar(36) NOT NULL,
   `IDendpoint` varchar(36) NOT NULL,
@@ -400,6 +423,7 @@ CREATE TABLE IF NOT EXISTS `sys_notifications` (
   CONSTRAINT `NotificationsOnEndpoints` FOREIGN KEY (`IDendpoint`) REFERENCES `sys_user_endpoints` (`endpointID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
+DROP TABLE IF EXISTS `sys_online`;
 CREATE TABLE IF NOT EXISTS `sys_online` (
   `sessionID` varchar(32) NOT NULL DEFAULT '',
   `IDuser` mediumint(9) NOT NULL DEFAULT '0',
@@ -413,6 +437,7 @@ CREATE TABLE IF NOT EXISTS `sys_online` (
   KEY `stand` (`lastaction`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `sys_ort_dist`;
 CREATE TABLE IF NOT EXISTS `sys_ort_dist` (
   `ort` varchar(40) CHARACTER SET latin1 COLLATE latin1_german2_ci NOT NULL DEFAULT '',
   `plzinradius` text CHARACTER SET latin1 COLLATE latin1_german2_ci NOT NULL,
@@ -424,6 +449,7 @@ CREATE TABLE IF NOT EXISTS `sys_ort_dist` (
   KEY `seo_ort` (`seo_ort`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `sys_photoalbums`;
 CREATE TABLE IF NOT EXISTS `sys_photoalbums` (
   `albumID` varchar(36) NOT NULL,
   `name` varchar(150) NOT NULL,
@@ -434,6 +460,7 @@ CREATE TABLE IF NOT EXISTS `sys_photoalbums` (
   CONSTRAINT `PhotoAlbumsOnUser` FOREIGN KEY (`IDuser`) REFERENCES `sys_user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `sys_photoalbums_photos`;
 CREATE TABLE IF NOT EXISTS `sys_photoalbums_photos` (
   `photoID` varchar(36) NOT NULL,
   `IDalbum` varchar(36) NOT NULL,
@@ -444,6 +471,7 @@ CREATE TABLE IF NOT EXISTS `sys_photoalbums_photos` (
   CONSTRAINT `PhotosOnAlbums` FOREIGN KEY (`IDalbum`) REFERENCES `sys_photoalbums` (`albumID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `sys_places`;
 CREATE TABLE IF NOT EXISTS `sys_places` (
   `placeID` varchar(36) NOT NULL,
   `IDcreator` varchar(36) NOT NULL,
@@ -466,6 +494,7 @@ CREATE TABLE IF NOT EXISTS `sys_places` (
   CONSTRAINT `PlacesOnUser` FOREIGN KEY (`IDcreator`) REFERENCES `sys_user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `sys_plz`;
 CREATE TABLE IF NOT EXISTS `sys_plz` (
   `stID` varchar(13) COLLATE latin1_german2_ci NOT NULL DEFAULT '',
   `plz` varchar(6) COLLATE latin1_german2_ci DEFAULT NULL,
@@ -485,6 +514,7 @@ CREATE TABLE IF NOT EXISTS `sys_plz` (
   KEY `lang_2` (`lang`,`breit`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
 
+DROP TABLE IF EXISTS `sys_plz_dist`;
 CREATE TABLE IF NOT EXISTS `sys_plz_dist` (
   `plz` varchar(5) CHARACTER SET latin1 COLLATE latin1_german2_ci NOT NULL DEFAULT '',
   `plzinradius` text CHARACTER SET latin1 COLLATE latin1_german2_ci NOT NULL,
@@ -493,6 +523,7 @@ CREATE TABLE IF NOT EXISTS `sys_plz_dist` (
   PRIMARY KEY (`plz`,`dist`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `sys_pm`;
 CREATE TABLE IF NOT EXISTS `sys_pm` (
   `msgID` int(11) NOT NULL AUTO_INCREMENT,
   `IDsender` varchar(36) NOT NULL,
@@ -512,6 +543,7 @@ CREATE TABLE IF NOT EXISTS `sys_pm` (
   CONSTRAINT `PmOnUserSender` FOREIGN KEY (`IDsender`) REFERENCES `sys_user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=69120 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
+DROP TABLE IF EXISTS `sys_request_log`;
 CREATE TABLE IF NOT EXISTS `sys_request_log` (
   `autoID` int(11) NOT NULL AUTO_INCREMENT,
   `clientIP` varchar(15) NOT NULL,
@@ -524,6 +556,7 @@ CREATE TABLE IF NOT EXISTS `sys_request_log` (
   KEY `requestdate` (`requestdate`,`url`)
 ) ENGINE=MyISAM AUTO_INCREMENT=373958 DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `sys_user`;
 CREATE TABLE IF NOT EXISTS `sys_user` (
   `userID` varchar(36) NOT NULL,
   `olduid` int(11) DEFAULT NULL,
@@ -562,6 +595,7 @@ CREATE TABLE IF NOT EXISTS `sys_user` (
   CONSTRAINT `UserOnPhoto` FOREIGN KEY (`IDphotoavatar`) REFERENCES `sys_photoalbums_photos` (`photoID`) ON DELETE SET NULL ON UPDATE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
+DROP TABLE IF EXISTS `sys_user_endpoints`;
 CREATE TABLE IF NOT EXISTS `sys_user_endpoints` (
   `endpointID` varchar(36) NOT NULL,
   `IDuser` varchar(36) NOT NULL,
@@ -574,6 +608,7 @@ CREATE TABLE IF NOT EXISTS `sys_user_endpoints` (
   CONSTRAINT `EndpointsOnUser` FOREIGN KEY (`IDuser`) REFERENCES `sys_user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `sys_user_hobbies`;
 CREATE TABLE IF NOT EXISTS `sys_user_hobbies` (
   `IDuser` varchar(36) NOT NULL,
   `IDhobby` int(11) NOT NULL DEFAULT '0',
@@ -583,6 +618,7 @@ CREATE TABLE IF NOT EXISTS `sys_user_hobbies` (
   CONSTRAINT `HobbiesOnUser` FOREIGN KEY (`IDuser`) REFERENCES `sys_user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
+DROP TABLE IF EXISTS `sys_user_kvps`;
 CREATE TABLE IF NOT EXISTS `sys_user_kvps` (
   `IDuser` varchar(36) NOT NULL,
   `key` varchar(45) NOT NULL,
@@ -593,6 +629,7 @@ CREATE TABLE IF NOT EXISTS `sys_user_kvps` (
   CONSTRAINT `KvpsOnUser` FOREIGN KEY (`IDuser`) REFERENCES `sys_user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `sys_user_photos`;
 CREATE TABLE IF NOT EXISTS `sys_user_photos` (
   `photoID` varchar(36) NOT NULL,
   `IDuser` varchar(36) NOT NULL,
@@ -603,6 +640,7 @@ CREATE TABLE IF NOT EXISTS `sys_user_photos` (
   CONSTRAINT `PhotosOnUser` FOREIGN KEY (`IDuser`) REFERENCES `sys_user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `sys_user_rating`;
 CREATE TABLE IF NOT EXISTS `sys_user_rating` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `from_userID` varchar(36) NOT NULL,
@@ -617,6 +655,7 @@ CREATE TABLE IF NOT EXISTS `sys_user_rating` (
   CONSTRAINT `ToUserId` FOREIGN KEY (`to_userID`) REFERENCES `sys_user` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=658 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
+DROP TABLE IF EXISTS `sys_user_relations`;
 CREATE TABLE IF NOT EXISTS `sys_user_relations` (
   `IDleftuser` varchar(36) NOT NULL,
   `IDrightuser` varchar(36) NOT NULL,
