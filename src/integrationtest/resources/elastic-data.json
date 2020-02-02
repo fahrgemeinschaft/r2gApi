@@ -4,6 +4,7 @@
     "IDuser": "8954d4b2-a641-2524-5dc3-99c0b9ce0155",
     "Startdate": "20130703",
     "Starttime": "800",
+    "FixedStarttime": "0800",
     "StarttimeSearchRoute": null,
     "Smoker": "flex",
     "Prefgender": null,
