@@ -1,10 +1,8 @@
 package com.ride2go.r2gapi.service;
 
-import com.ride2go.r2gapi.IService;
 import com.ride2go.r2gapi.api.dto.OfferDto;
 import com.ride2go.r2gapi.api.dto.TripDto;
 import com.ride2go.r2gapi.legacy.elastic.ElasticTripRepository;
-import com.ride2go.r2gapi.legacy.model.Offer;
 import com.ride2go.r2gapi.legacy.model.Trip;
 import com.ride2go.r2gapi.legacy.repository.TripEntityRepository;
 import com.ride2go.r2gapi.legacy.search.TripType;
@@ -25,7 +23,7 @@ public class OfferService extends MarketBaseLegacyService<OfferDto> {
     private static final List<TripType> SUPPORTED_TYPES = Collections.singletonList(TripType.OFFER);
 
     protected OfferService(ElasticTripRepository elasticTripRepository, TripEntityRepository tripEntityRepository, TripMapper tripMapper) {
-        super(elasticTripRepository, tripEntityRepository, tripMapper);
+        super(elasticTripRepository, tripEntityRepository, tripMapper, securityHelper);
     }
 
 

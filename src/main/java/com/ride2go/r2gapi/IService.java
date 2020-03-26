@@ -1,12 +1,13 @@
 package com.ride2go.r2gapi;
 
+import com.ride2go.r2gapi.api.dto.ThingDto;
 import com.ride2go.r2gapi.legacy.search.Search;
 import com.ride2go.r2gapi.legacy.search.paging.Page;
 
 import java.util.Optional;
 import java.util.UUID;
 
-public interface IService<T> {
+public interface IService<T extends ThingDto> {
 
 
     Optional<T> findById(UUID id);

@@ -48,7 +48,7 @@ public class OfferApi extends MarketApiBase<OfferDto> {
     @PostMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(description = "Create an Offer")
     @ApiResponse(description = "Successful operation", responseCode = "200")
-    @ApiResponse(description = "Malformed Data", responseCode = "400", content = @Content)
+    @ApiResponse(description = "Malformed Data", responseCode = "422", content = @Content)
     public ResponseEntity<OfferDto> create(@Parameter(description = "Offer Data", required = true) @RequestBody final OfferDto offerDto) {
         return doCreate(offerDto);
     }
@@ -58,7 +58,8 @@ public class OfferApi extends MarketApiBase<OfferDto> {
     @PutMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(description = "Update an Offer")
     @ApiResponse(description = "Successful operation", responseCode = "200")
-    @ApiResponse(description = "Malformed Data", responseCode = "400", content = @Content)
+    @ApiResponse(description = "Malformed Data", responseCode = "422", content = @Content)
+    @ApiResponse(description = "Entity Not Found", responseCode = "404", content = @Content)
     public ResponseEntity<OfferDto> update(@Parameter(description = "Offer Data", required = true) @RequestBody final OfferDto offerDto) {
         return doUpdate(offerDto);
     }
@@ -67,7 +68,8 @@ public class OfferApi extends MarketApiBase<OfferDto> {
     @DeleteMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(description = "Delete an Offer")
     @ApiResponse(description = "Successful operation", responseCode = "200")
-    @ApiResponse(description = "Malformed Data", responseCode = "400", content = @Content)
+    @ApiResponse(description = "Malformed Data", responseCode = "422", content = @Content)
+    @ApiResponse(description = "Entity Not Found", responseCode = "404", content = @Content)
     public ResponseEntity<OfferDto> delete(@Parameter(description = "Offer Data", required = true) @RequestBody final OfferDto offerDto) {
         return doDelete(offerDto);
     }

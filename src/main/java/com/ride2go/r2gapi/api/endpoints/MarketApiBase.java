@@ -1,6 +1,7 @@
 package com.ride2go.r2gapi.api.endpoints;
 
 import com.ride2go.r2gapi.IService;
+import com.ride2go.r2gapi.api.dto.ThingDto;
 import com.ride2go.r2gapi.api.dto.TripDto;
 import com.ride2go.r2gapi.api.sanity.SearchSanitizer;
 import com.ride2go.r2gapi.legacy.elastic.ElasticTripRepository;
@@ -21,7 +22,7 @@ import java.util.UUID;
 
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
-abstract class MarketApiBase<T> {
+abstract class MarketApiBase<T extends ThingDto> {
 
     IService<T> marketService;
     SearchSanitizer searchSanitizer;
@@ -42,7 +43,7 @@ abstract class MarketApiBase<T> {
     protected  ResponseEntity<T> doCreate(T data){
         return marketService.create(data)
                 .map(t -> ResponseEntity.ok().body(t))
-                .orElse(ResponseEntity.notFound().build());
+                .orElse(ResponseEntity.unprocessableEntity().build());
     }
 
     protected ResponseEntity<T> doUpdate(T data){

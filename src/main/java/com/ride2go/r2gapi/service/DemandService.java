@@ -1,7 +1,6 @@
 package com.ride2go.r2gapi.service;
 
 import com.ride2go.r2gapi.api.dto.DemandDto;
-import com.ride2go.r2gapi.api.dto.OfferDto;
 import com.ride2go.r2gapi.api.dto.TripDto;
 import com.ride2go.r2gapi.legacy.elastic.ElasticTripRepository;
 import com.ride2go.r2gapi.legacy.model.Trip;
@@ -25,7 +24,7 @@ public class DemandService extends MarketBaseLegacyService<DemandDto> {
     private static final List<TripType> SUPPORTED_TYPES = Collections.singletonList(TripType.OFFER);
 
     protected DemandService(ElasticTripRepository elasticTripRepository, TripEntityRepository tripEntityRepository, TripMapper tripMapper) {
-        super(elasticTripRepository, tripEntityRepository, tripMapper);
+        super(elasticTripRepository, tripEntityRepository, tripMapper, securityHelper);
     }
 
 
