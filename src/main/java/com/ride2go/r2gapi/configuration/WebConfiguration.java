@@ -2,6 +2,7 @@ package com.ride2go.r2gapi.configuration;
 
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.datatype.jsr310.deser.InstantDeserializer;
+import com.ride2go.r2gapi.api.sanity.SearchSanitizer;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,4 +40,9 @@ public class WebConfiguration {
         }
     }
 
+
+    @Bean
+    SearchSanitizer createSearchSanitizer(){
+        return new SearchSanitizer();
+    }
 }
