@@ -1,4 +1,4 @@
-package com.ride2go.r2gapi.security.oauth.resourceserver;
+package com.ride2go.security.oauth.resourceserver;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.core.GrantedAuthority;
