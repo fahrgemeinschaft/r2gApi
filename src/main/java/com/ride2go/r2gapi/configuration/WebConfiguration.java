@@ -2,7 +2,10 @@ package com.ride2go.r2gapi.configuration;
 
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.datatype.jsr310.deser.InstantDeserializer;
+import com.ride2go.r2gapi.api.dto.TripDto;
 import com.ride2go.r2gapi.api.sanity.SearchSanitizer;
+import com.ride2go.r2gapi.legacy.model.Trip;
+import com.ride2go.r2gapi.mapper.TripMapper;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +14,7 @@ import java.time.Instant;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Configuration
 public class WebConfiguration {
@@ -45,4 +49,6 @@ public class WebConfiguration {
     SearchSanitizer createSearchSanitizer(){
         return new SearchSanitizer();
     }
+
+
 }

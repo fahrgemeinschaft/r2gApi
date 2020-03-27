@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 import java.time.ZonedDateTime;
+import java.util.UUID;
 
 @Schema(description = "represents an API object")
 @Data
@@ -25,4 +26,9 @@ public class ApiDataDto {
     @Schema(description = "a flag, whether this object is deleted")
     boolean deleted;
 
+    @Schema(description = "id of creator")
+    UUID createdBy;
+
+    @Schema(description = "id of modifier")
+    UUID modifiedBy;
 }

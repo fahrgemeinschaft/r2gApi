@@ -18,13 +18,15 @@ public abstract class TripMapper {
     @Mapping(target = "demand.subject", ignore = true)
     public abstract TripDto toDto(Trip trip);
 
+
+
     @AfterMapping
     protected void fillMarkets(Trip trip, @MappingTarget TripDto dto) {
-        fillSubject(dto.getOffer(), dto);
-        fillSubject(dto.getDemand(), dto);
+        fillDtoSubject(dto.getOffer(), dto);
+        fillDtoSubject(dto.getDemand(), dto);
     }
 
-    private void fillSubject(MarketDto market, TripDto trip) {
+    private void fillDtoSubject(MarketDto market, TripDto trip) {
         if (market != null) {
             market.setSubject(trip);
         }
@@ -35,5 +37,15 @@ public abstract class TripMapper {
     public Page<TripDto> toDto(Page<Trip> trips) {
         return Page.of(toDto(trips.getResults()), trips.getPage());
     }
+
+
+    public abstract Trip fromDto(TripDto tripDto);
+
+    public abstract List<Trip> fromDto(List<TripDto> tripDtoList);
+
+    public Page<Trip> fromDto(Page<TripDto>tripDtos){
+        return Page.of(fromDto(tripDtos.getResults()), tripDtos.getPage());
+    }
+
 
 }

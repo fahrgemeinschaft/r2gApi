@@ -8,7 +8,9 @@ import com.ride2go.r2gapi.legacy.repository.TripEntityRepository;
 import com.ride2go.r2gapi.legacy.search.TripType;
 import com.ride2go.r2gapi.legacy.search.paging.Page;
 import com.ride2go.r2gapi.mapper.OfferMapper;
+import com.ride2go.r2gapi.mapper.TripDtoMapper;
 import com.ride2go.r2gapi.mapper.TripMapper;
+import com.ride2go.r2gapi.security.SecurityHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,9 +22,11 @@ public class OfferService extends MarketBaseLegacyService<OfferDto> {
 
     @Autowired
     OfferMapper offerMapper;
+
+
     private static final List<TripType> SUPPORTED_TYPES = Collections.singletonList(TripType.OFFER);
 
-    protected OfferService(ElasticTripRepository elasticTripRepository, TripEntityRepository tripEntityRepository, TripMapper tripMapper) {
+    protected OfferService(ElasticTripRepository elasticTripRepository, TripEntityRepository tripEntityRepository, TripMapper tripMapper, SecurityHelper securityHelper) {
         super(elasticTripRepository, tripEntityRepository, tripMapper, securityHelper);
     }
 
@@ -34,8 +38,7 @@ public class OfferService extends MarketBaseLegacyService<OfferDto> {
 
     @Override
     protected TripDto reverseMap(OfferDto data) {
-        //FIXME
-        return null;
+        return offerMapper.reverseMap(data);
     }
 
     @Override

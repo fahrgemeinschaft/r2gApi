@@ -13,11 +13,12 @@ import java.util.stream.Collectors;
 
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
-abstract class MarkerMapper<T extends MarketDto> {
+abstract class MarketMapper<T extends MarketDto> {
 
     TripMapper tripMapper;
 
     public abstract T map(TripDto trip);
+    public abstract TripDto reverseMap(T marketDto);
 
     public List<T> map(List<Trip> trips) {
         return trips.stream()

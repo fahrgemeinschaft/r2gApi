@@ -5,7 +5,7 @@ import com.ride2go.r2gapi.api.dto.TripDto;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DemandMapper extends MarkerMapper<DemandDto> {
+public class DemandMapper extends MarketMapper<DemandDto> {
 
     public DemandMapper(TripMapper tripMapper) {
         super(tripMapper);
@@ -14,5 +14,10 @@ public class DemandMapper extends MarkerMapper<DemandDto> {
     @Override
     public DemandDto map(TripDto trip) {
         return trip.getDemand();
+    }
+
+    @Override
+    public TripDto reverseMap(DemandDto marketDto) {
+        return marketDto.getSubject();
     }
 }

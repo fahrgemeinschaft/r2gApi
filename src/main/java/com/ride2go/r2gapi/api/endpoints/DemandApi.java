@@ -3,18 +3,12 @@ package com.ride2go.r2gapi.api.endpoints;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.ride2go.r2gapi.api.dto.DemandDto;
-import com.ride2go.r2gapi.api.dto.OfferDto;
-import com.ride2go.r2gapi.api.dto.TripDto;
 import com.ride2go.r2gapi.api.dto.Views;
 import com.ride2go.r2gapi.api.sanity.DemandSanitizer;
 import com.ride2go.r2gapi.api.sanity.SearchSanitizer;
-import com.ride2go.r2gapi.legacy.elastic.ElasticTripRepository;
-import com.ride2go.r2gapi.legacy.model.Trip;
 import com.ride2go.r2gapi.legacy.search.Search;
 import com.ride2go.r2gapi.legacy.search.TripType;
 import com.ride2go.r2gapi.legacy.search.paging.Page;
-import com.ride2go.r2gapi.mapper.DemandMapper;
-import com.ride2go.r2gapi.mapper.TripMapper;
 import com.ride2go.r2gapi.service.DemandService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
