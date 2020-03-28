@@ -8,7 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.UUID;
-
+//TODO: reconsider if a delegate pattern is possible here.
 public abstract class AbstractAuthenticatingService<T extends ThingDto> implements IService<T> {
     final SecurityHelper securityHelper;
     final ElasticTripRepository elasticTripRepository;
@@ -20,10 +20,13 @@ public abstract class AbstractAuthenticatingService<T extends ThingDto> implemen
 
     protected boolean canUserCreate(T data){
         final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return securityHelper.isUserAdmin(authentication) || securityHelper.isRide2GoUser(authentication);
+        return data!=null && securityHelper.isUserAdmin(authentication) || securityHelper.isRide2GoUser(authentication);
     }
 
     protected boolean canUserUpdate(T data){
+        if (data==null){
+            return false;
+        }
         final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if(securityHelper.isUserAdmin(authentication) ||
                 securityHelper.isRide2GoUser(authentication) && isUserCreatorOf(authentication,data))
