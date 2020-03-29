@@ -2,19 +2,11 @@ package com.ride2go.r2gapi.api.endpoints;
 
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.ride2go.r2gapi.api.dto.DemandDto;
-import com.ride2go.r2gapi.api.dto.OfferDto;
-import com.ride2go.r2gapi.api.dto.TripDto;
-import com.ride2go.r2gapi.api.dto.Views;
+import com.ride2go.r2gapi.api.dto.*;
+import com.ride2go.r2gapi.api.dto.search.SearchDto;
 import com.ride2go.r2gapi.api.sanity.OfferSanitizer;
 import com.ride2go.r2gapi.api.sanity.SearchSanitizer;
-import com.ride2go.r2gapi.legacy.elastic.ElasticTripRepository;
-import com.ride2go.r2gapi.legacy.model.Trip;
-import com.ride2go.r2gapi.legacy.search.Search;
-import com.ride2go.r2gapi.legacy.search.TripType;
 import com.ride2go.r2gapi.legacy.search.paging.Page;
-import com.ride2go.r2gapi.mapper.OfferMapper;
-import com.ride2go.r2gapi.mapper.TripMapper;
 import com.ride2go.r2gapi.service.OfferService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -26,9 +18,6 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Collections;
-import java.util.List;
 
 @RestController
 @RequestMapping("/offer")
@@ -99,8 +88,11 @@ public class OfferApi extends MarketApiBase<OfferDto> {
     @PostMapping(path = "/search", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @Operation(description = "Offer searching")
     @ApiResponse(description = "Successful operation", responseCode = "200")
-    public ResponseEntity<Page<OfferDto>> search(@Parameter(description = "Search criteria", required = true) @RequestBody Search searchParams) {
+    @ApiResponse(description = "Nothing found", responseCode = "204")
+    public ResponseEntity<Page<OfferDto>> search(@Parameter(description = "Search criteria", required = true) @RequestBody SearchDto searchParams) {
+
         return doSearch(searchParams);
+
     }
 
     @Override

@@ -36,4 +36,6 @@ public class MarketDto extends ThingDto {
     @Schema(description = "currency of the price")
     String priceCurrency;
 
+    @Schema(description = "the organisation or person representing the marketActor ")
+    PersonaDto marketActor;
 }

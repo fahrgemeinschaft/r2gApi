@@ -3,6 +3,7 @@ package com.ride2go.r2gapi.api.endpoints;
 import com.ride2go.r2gapi.IService;
 import com.ride2go.r2gapi.api.dto.ThingDto;
 import com.ride2go.r2gapi.api.dto.TripDto;
+import com.ride2go.r2gapi.api.dto.search.SearchDto;
 import com.ride2go.r2gapi.api.sanity.SearchSanitizer;
 import com.ride2go.r2gapi.legacy.elastic.ElasticTripRepository;
 import com.ride2go.r2gapi.legacy.model.Trip;
@@ -64,11 +65,15 @@ abstract class MarketApiBase<T extends ThingDto> {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    protected ResponseEntity<Page<T>> doSearch(Search searchParams) {
+    protected ResponseEntity<Page<T>> doSearch(SearchDto searchParams) {
+
         if (!searchSanitizer.sanitizeSearch(searchParams)) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
-        return ResponseEntity.ok(marketService.search(searchParams));
+        return marketService.search(searchParams)
+                .map(p -> ResponseEntity.ok(p))
+                .orElse(ResponseEntity.noContent().build());
+
     }
 
 

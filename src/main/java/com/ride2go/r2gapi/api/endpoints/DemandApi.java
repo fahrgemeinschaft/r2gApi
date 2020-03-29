@@ -4,9 +4,9 @@ package com.ride2go.r2gapi.api.endpoints;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.ride2go.r2gapi.api.dto.DemandDto;
 import com.ride2go.r2gapi.api.dto.Views;
+import com.ride2go.r2gapi.api.dto.search.SearchDto;
 import com.ride2go.r2gapi.api.sanity.DemandSanitizer;
 import com.ride2go.r2gapi.api.sanity.SearchSanitizer;
-import com.ride2go.r2gapi.legacy.search.Search;
 import com.ride2go.r2gapi.legacy.search.TripType;
 import com.ride2go.r2gapi.legacy.search.paging.Page;
 import com.ride2go.r2gapi.service.DemandService;
@@ -92,7 +92,7 @@ public class DemandApi extends MarketApiBase<DemandDto> {
     @PostMapping(path = "/search", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @Operation(description = "Demand searching")
     @ApiResponse(description = "Successful operation", responseCode = "200")
-    public ResponseEntity<Page<DemandDto>> search(@Parameter(description = "Search criteria", required = true) @RequestBody Search searchParams) {
+    public ResponseEntity<Page<DemandDto>> search(@Parameter(description = "Search criteria", required = true) @RequestBody SearchDto searchParams) {
         return doSearch(searchParams);
     }
 

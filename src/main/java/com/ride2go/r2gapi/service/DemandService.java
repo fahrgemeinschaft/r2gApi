@@ -8,6 +8,7 @@ import com.ride2go.r2gapi.legacy.repository.TripEntityRepository;
 import com.ride2go.r2gapi.legacy.search.TripType;
 import com.ride2go.r2gapi.legacy.search.paging.Page;
 import com.ride2go.r2gapi.mapper.DemandMapper;
+import com.ride2go.r2gapi.mapper.SearchMapper;
 import com.ride2go.r2gapi.mapper.TripMapper;
 import com.ride2go.r2gapi.security.SecurityHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,8 @@ public class DemandService extends MarketBaseLegacyService<DemandDto> {
 
     private static final List<TripType> SUPPORTED_TYPES = Collections.singletonList(TripType.OFFER);
 
-    protected DemandService(ElasticTripRepository elasticTripRepository, TripEntityRepository tripEntityRepository, TripMapper tripMapper, SecurityHelper securityHelper) {
-        super(elasticTripRepository, tripEntityRepository, tripMapper, securityHelper);
+    protected DemandService(ElasticTripRepository elasticTripRepository, TripEntityRepository tripEntityRepository, TripMapper tripMapper, SearchMapper searchMapper, SecurityHelper securityHelper) {
+        super(elasticTripRepository, tripEntityRepository, tripMapper, searchMapper, securityHelper);
     }
 
 
