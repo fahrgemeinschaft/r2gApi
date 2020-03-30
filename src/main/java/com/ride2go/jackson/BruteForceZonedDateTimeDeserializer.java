@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+import com.ride2go.time.TimeZoneNames;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,7 +39,7 @@ public class BruteForceZonedDateTimeDeserializer extends StdDeserializer<ZonedDa
         try {
 
             logger.info("BruteForceZonedDateTimeDeserializer: input="+input);
-            ZonedDateTime.ofInstant(Instant.parse(input), ZoneId.of("Europe/Berlin"));
+            ZonedDateTime.ofInstant(Instant.parse(input), ZoneId.of(TimeZoneNames.BERLN));
             logger.info("BruteForceZonedDateTimeDeserializer: time="+zonedDateTime.toString());
         }catch (Exception e){
             logger.error("BruteForceZonedDateTimeDeserializer: unable to parse "+input+" into ZonedDateTime with Format "+FORMAT);
