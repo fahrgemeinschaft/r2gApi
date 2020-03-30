@@ -49,4 +49,7 @@ public class TripDto extends ThingDto {
     @Schema(description = "animal transport preferences of the trip")
     Animals animals;
 
+    List<ScheduleDto> schedules;
+
+
 }
