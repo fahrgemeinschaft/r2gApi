@@ -14,6 +14,7 @@ import com.ride2go.r2gapi.mapper.TripMapper;
 import com.ride2go.r2gapi.security.SecurityHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.lang.NonNull;
 
 import java.util.List;
 import java.util.Optional;
@@ -52,7 +53,7 @@ public abstract class MarketBaseLegacyService<T extends ThingDto> extends Abstra
 
         Search search = searchMapper.map(searchParams);
 
-        search.setTripTypes(supportedTripTypes());
+        lockDefaultSearchTripType(search);
         try {
             Page<Trip> trips = elasticTripRepository.findAllTrips(search);
             if (trips != null) {
@@ -90,6 +91,10 @@ public abstract class MarketBaseLegacyService<T extends ThingDto> extends Abstra
         return Optional.empty();
     }
 
+
+    protected void lockDefaultSearchTripType(Search search){
+        search.setTripTypes(supportedTripTypes());
+    }
 /*
     private TripEntity toTripEntity(T data){
         TripDto tripDto = reverseMap(data);
