@@ -3,8 +3,8 @@ package com.ride2go.r2gapi.api.endpoints;
 
 import com.ride2go.r2gapi.api.dto.UserSearch;
 import com.ride2go.r2gapi.api.sanity.PersonaSanitizer;
-import com.ride2go.r2gapi.legacy.model.ContactPoint;
-import com.ride2go.r2gapi.legacy.model.Persona;
+import com.ride2go.core.persona.ContactPoint;
+import com.ride2go.core.persona.Persona;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;

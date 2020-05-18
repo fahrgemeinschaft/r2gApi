@@ -3,7 +3,7 @@ package com.ride2go.r2gapi.service;
 import com.ride2go.r2gapi.api.dto.DemandDto;
 import com.ride2go.r2gapi.api.dto.TripDto;
 import com.ride2go.r2gapi.legacy.elastic.ElasticTripRepository;
-import com.ride2go.r2gapi.legacy.model.Trip;
+import com.ride2go.core.trip.Trip;
 import com.ride2go.r2gapi.legacy.repository.TripEntityRepository;
 import com.ride2go.r2gapi.legacy.search.TripType;
 import com.ride2go.r2gapi.legacy.search.paging.Page;

@@ -4,7 +4,7 @@ import com.ride2go.r2gapi.api.dto.ThingDto;
 import com.ride2go.r2gapi.api.dto.TripDto;
 import com.ride2go.r2gapi.api.dto.search.SearchDto;
 import com.ride2go.r2gapi.legacy.elastic.ElasticTripRepository;
-import com.ride2go.r2gapi.legacy.model.Trip;
+import com.ride2go.core.trip.Trip;
 import com.ride2go.r2gapi.legacy.repository.TripEntityRepository;
 import com.ride2go.r2gapi.legacy.search.Search;
 import com.ride2go.r2gapi.legacy.search.TripType;

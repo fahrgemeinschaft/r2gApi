@@ -6,7 +6,7 @@ import com.ride2go.r2gapi.api.dto.TripDto;
 import com.ride2go.r2gapi.api.dto.search.SearchDto;
 import com.ride2go.r2gapi.api.sanity.SearchSanitizer;
 import com.ride2go.r2gapi.legacy.elastic.ElasticTripRepository;
-import com.ride2go.r2gapi.legacy.model.Trip;
+import com.ride2go.core.trip.Trip;
 import com.ride2go.r2gapi.legacy.search.Search;
 import com.ride2go.r2gapi.legacy.search.TripType;
 import com.ride2go.r2gapi.legacy.search.paging.Page;

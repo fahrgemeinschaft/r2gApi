@@ -2,7 +2,7 @@ package com.ride2go.r2gapi.mapper;
 
 import com.ride2go.r2gapi.api.dto.MarketDto;
 import com.ride2go.r2gapi.api.dto.TripDto;
-import com.ride2go.r2gapi.legacy.model.Trip;
+import com.ride2go.core.trip.Trip;
 import com.ride2go.r2gapi.legacy.search.paging.Page;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
