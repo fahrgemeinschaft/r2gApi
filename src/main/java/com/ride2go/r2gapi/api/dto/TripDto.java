@@ -51,5 +51,17 @@ public class TripDto extends ThingDto {
 
     List<ScheduleDto> schedules;
 
+    @Schema(description = "itinerary of departure Stops of Trip")
+    List<WeightedPlaceItemDto> itinerary;
+
+    @Schema(description = "Subtrips of the trip")
+    List<WeightedTripItemDto> subTrips;
+
+    @Schema(description = "Departure of Trip")
+    PlaceDto departureFrom;
+
+    @Schema(description = "Arrival Stop of Trip")
+    PlaceDto arrivalAt;
+
 
 }

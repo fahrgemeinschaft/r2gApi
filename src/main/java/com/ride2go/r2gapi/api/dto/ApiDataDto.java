@@ -13,7 +13,7 @@ import java.util.UUID;
 @Schema(description = "represents an API object")
 @Data
 @NoArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PROTECTED)
 @EqualsAndHashCode(callSuper = false)
 public class ApiDataDto {
 

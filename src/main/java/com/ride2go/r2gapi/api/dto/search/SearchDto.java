@@ -88,4 +88,9 @@ public class SearchDto {
     @JsonDeserialize(using = BruteForceZonedDateTimeDeserializer.class)
     ZonedDateTime availabilityEnds;
 
+    @Schema(description = "User associations")
+    List<String> associations;
+
+
+
 }

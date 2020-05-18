@@ -23,4 +23,7 @@ public class ContactPointDto extends ThingDto {
     @Schema(description = "telephone")
     String telephone;
 
+    @Schema(description = "mobile")
+    String mobile;
+
 }
